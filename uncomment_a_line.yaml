@@ -1,0 +1,7 @@
+---
+tasks:
+  - name: uncomment /etc/fstb swap line 
+    replace:
+     path: /etc/fstab
+     regexp: '^#(.*Uncomment this line.*)'
+     replace: '\1'

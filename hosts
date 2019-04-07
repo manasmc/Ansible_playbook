@@ -1,0 +1,28 @@
+[kubmaster]
+192.168.70.30 ansible_user=kubmaster ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+[kubnode1]
+192.168.70.31 ansible_user=kubnode1 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+[kubnode2]
+192.168.70.32 ansible_user=kubnode2 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+
+[kubcluster]
+192.168.70.32 ansible_user=kubnode2 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.31 ansible_user=kubnode1 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.30 ansible_user=kubmaster ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+[kubnodes]
+192.168.70.32 ansible_user=kubnode2 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.31 ansible_user=kubnode1 ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+
+[devops]
+192.168.70.35 ansible_user=devops ansible_become=True ansible_become_method=sudo ansible_become_user=root ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+
+[all_hosts]
+192.168.70.30	ansible_user=kubmaster	ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.31	ansible_user=kubnode1	ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.32	ansible_user=kubnode2	ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible
+192.168.70.35	ansible_user=devops	ansible_private_key_file=/home/home/Documents/Ansible_Lab/ansible

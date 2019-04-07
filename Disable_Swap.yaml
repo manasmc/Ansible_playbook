@@ -1,0 +1,12 @@
+---
+- hosts: kubcluster
+  become: yes
+  tasks:
+   - name: Disable swap on the host for Kubernates
+     shell:
+      swapoff -a
+   - name: uncomment /etc/fstb swap line 
+     replace:
+      path: /etc/fstab
+      regexp: '(.*swap.*)'
+      replace: '#\1'
