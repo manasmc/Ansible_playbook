@@ -1,0 +1,20 @@
+---
+- name: Port open for Kubemaster Kubernetes API Server
+  firewalld:
+   port: 6443/tcp
+   permanent: yes
+   state: enabled
+- name: Port open for etcd server client API
+  firewalld:
+   port: 2379-2380/tcp
+   permanent: yes
+   state: enabled
+- name: Port open for 1 Kublet API 2 Kube-Scheduler 3 Kube-controller-manager
+  firewalld:
+   port: 10250-10252/tcp
+   permanent: yes
+   state: enabled
+- name: Restart the firewalld service
+  service: 
+   name: firewalld
+   state: restarted 

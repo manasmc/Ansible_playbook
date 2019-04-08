@@ -1,0 +1,37 @@
+---
+   - name: Remove existing Docker CE for CentOs oe RedHat
+     yum:
+      name:
+       - docker-client
+       - docker-client-latest
+       - docker-common
+       - docker-latest
+       - docker-latest-logrotate
+       - docker-logrotate
+       - docker-engine
+      state: absent
+
+   - name: Install Repository required packages
+     yum:
+      name:
+       - yum-utils
+       - device-mapper-persistent-data
+       - lvm2
+      state: present
+
+   - name: Install Docker CE official Repository
+     shell:
+      yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+   - name: Install Docker CE latest Version 
+     yum:
+      name:
+       - docker-ce
+       - docker-ce-cli
+       - containerd.io
+      state: latest
+     when: ansible_os_family=="RedHat"
+     notify: docker
+
+   
+
